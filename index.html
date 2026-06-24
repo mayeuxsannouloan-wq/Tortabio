@@ -30,20 +30,14 @@
             color: var(--tortabio-dark);
             line-height: 1.6;
             
-            /* DEGRADÉ APPARENT ET TRÈS MARQUÉ (VERT ET ROSE ACCENTUÉS) */
-            background-color: #f7f3f5;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(255, 107, 139, 0.45) 0px, transparent 60%),
-                radial-gradient(at 100% 0%, rgba(76, 175, 80, 0.45) 0px, transparent 60%),
-                radial-gradient(at 100% 100%, rgba(255, 107, 139, 0.4) 0px, transparent 65%),
-                radial-gradient(at 0% 100%, rgba(76, 175, 80, 0.45) 0px, transparent 60%),
-                radial-gradient(at 50% 50%, rgba(255, 230, 235, 0.6) 0px, transparent 70%);
+            /* DÉGRADÉ ULTRA SMOOTH SANS LIGNE DE SÉPARATION */
+            background: linear-gradient(135deg, #FFEBEF 0%, #FFF5F6 35%, #F0F9F1 70%, #E8F5E9 100%);
             background-attachment: fixed;
         }
 
         /* Barre de Navigation */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             padding: 12px 8%;
             display: flex;
@@ -108,13 +102,12 @@
             box-shadow: 0 8px 16px rgba(255, 107, 139, 0.3);
         }
 
-        /* Hero Section */
+        /* Hero Section modifié pour laisser passer le fond fluidement */
         .hero {
-            background: linear-gradient(135deg, rgba(238, 247, 240, 0.6) 0%, rgba(253, 242, 244, 0.6) 100%);
-            padding: 100px 8% 80px 8%;
+            background: transparent;
+            padding: 120px 8% 100px 8%;
             text-align: center;
             position: relative;
-            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .hero h1 {
@@ -171,7 +164,8 @@
         }
 
         .pitch-box {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
             border-radius: 24px;
             padding: 45px;
             box-shadow: var(--card-shadow);
@@ -190,7 +184,8 @@
         }
 
         .feature-card {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
             border-radius: 24px;
             padding: 35px 30px;
             box-shadow: var(--card-shadow);
@@ -241,7 +236,8 @@
         }
 
         .gallery-item {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
             border-radius: 24px;
             padding: 24px;
             box-shadow: var(--card-shadow);
@@ -320,7 +316,8 @@
         }
 
         .price-box {
-            background: linear-gradient(135deg, #ffffff 0%, #fffcfd 100%);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
             border: 2px solid var(--tortabio-pink-main);
             max-width: 550px;
             margin: 0 auto;
@@ -374,7 +371,8 @@
         }
 
         .trust-box {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
             border-radius: 24px;
             padding: 50px;
             box-shadow: var(--card-shadow);
@@ -537,57 +535,4 @@
 
     <section id="commander" class="order-section">
         <h2 class="section-title">Adoptez Tortabio dès aujourd'hui</h2>
-        <div class="section-subtitle">Offrez à votre enfant le compagnon d'apprentissage idéal</div>
-        
-        <div class="price-box">
-            <h3>Le Pack Complet Tortabio</h3>
-            <div class="price-tag">24,99€</div>
-            <ul class="price-features">
-                <li>🟢 <strong>Tablette Éducative & Coque Carapace</strong> ultra-résistante.</li>
-                <li>🤖 <strong>IA Tortabio intégrée</strong> : transmet, traduit et analyse les objets scannés.</li>
-                <li>🛡️ <strong>Système d'information des dangers</strong> en temps réel pour l'enfant.</li>
-                <li>🌍 Donne la fonction de l'objet de façon amusante.</li>
-                <li>✨ Garantie zéro publicité et 100% sécurisée.</li>
-            </ul>
-            <a href="#" class="cta-big" style="background-color: var(--tortabio-pink-main); box-shadow: 0 10px 20px rgba(255, 107, 139, 0.2);">Réserver maintenant</a>
-        </div>
-    </section>
-
-    <section id="parents" class="parents-trust">
-        <h2 class="section-title">Conçu pour rassurer les parents</h2>
-        <div class="section-subtitle">Un environnement de confiance, sain et sans concession</div>
-        <div class="trust-box">
-            <p>Un écosystème 100% sécurisé et éducatif</p>
-            <ul class="trust-list">
-                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées à tout moment.</li>
-                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues de traduction, limitez le temps d'utilisation et suivez les progrès en direct.</li>
-                <li><strong>Matériau durable et ergonomique :</strong> Une coque unique en forme de carapace de tortue, ultra-résistante aux chutes du quotidien.</li>
-            </ul>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Tortabio. Conçu pour la sécurité et l'éveil des enfants. 🐢</p>
-        <div class="footer-links">
-            <a href="#">Mentions Légales</a>
-            <a href="#">Politique de Confidentialité</a>
-            <a href="#">Contact</a>
-        </div>
-    </footer>
-
-    <script>
-        function openZoom(imageSrc) {
-            var modal = document.getElementById("zoomModal");
-            var modalImg = document.getElementById("modalImg");
-            modal.classList.add("active");
-            modalImg.src = imageSrc;
-        }
-
-        function closeZoom() {
-            var modal = document.getElementById("zoomModal");
-            modal.classList.remove("active");
-        }
-    </script>
-
-</body>
-</html>
+        <div class="section-subtitle">Off
