@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortabio - La tablette ludique & éducative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Modak&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tortabio-green-dark: #4CAF50;
+            --tortabio-green-light: #81C784;
+            --tortabio-green-bright: #66BB6A;
+            --tortabio-pink-main: #FF8DA1;
+            --tortabio-pink-dark: #FF6B8B;
+            --tortabio-pink-light: #FFB3C1;
+            --tortabio-bg: #F4FBF4;
+            --tortabio-white: #FFFFFF;
+            --tortabio-dark: #2C3E50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: var(--tortabio-bg);
+            color: var(--tortabio-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* En-tête / Navigation */
+        header {
+            background-color: var(--tortabio-white);
+            border-bottom: 8px solid var(--tortabio-green-bright);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-text {
+            font-family: 'Modak', cursive;
+            font-size: 2.5rem;
+            color: var(--tortabio-green-dark);
+            text-shadow: 3px 3px 0px var(--tortabio-pink-main);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--tortabio-dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            color: var(--tortabio-pink-dark);
+            background-color: var(--tortabio-pink-light);
+        }
+
+        .cta-header {
+            background-color: var(--tortabio-pink-main);
+            color: white !important;
+            border: 3px solid var(--tortabio-pink-dark);
+            box-shadow: 0 4px 0 var(--tortabio-pink-dark);
+        }
+
+        .cta-header:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--tortabio-pink-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(circle, var(--tortabio-green-light) 0%, var(--tortabio-green-dark) 100%);
+            padding: 80px 5%;
+            color: white;
+            text-align: center;
+            position: relative;
+            border-bottom: 12px solid var(--tortabio-pink-main);
+        }
+
+        .hero h1 {
+            font-family: 'Modak', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 4px 4px 0px var(--tortabio-pink-dark);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 35px auto;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .cta-big {
+            display: inline-block;
+            background-color: var(--tortabio-pink-main);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 4px solid white;
+            box-shadow: 0 8px 0 var(--tortabio-pink-dark), 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        .cta-big:hover {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 var(--tortabio-pink-dark), 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Section Présentation / Pitch */
+        .presentation {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Modak', cursive;
+            font-size: 3rem;
+            color: var(--tortabio-green-dark);
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0px var(--tortabio-pink-light);
+        }
+
+        .pitch-box {
+            background-color: white;
+            border: 6px solid var(--tortabio-green-bright);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 12px 0 var(--tortabio-green-dark);
+            font-size: 1.2rem;
+            color: var(--tortabio-dark);
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        /* Features / Fonctionnalités */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border: 4px solid var(--tortabio-pink-main);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 8px 0 var(--tortabio-pink-light);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: var(--tortabio-green-dark);
+            margin-bottom: 12px;
+        }
+
+        /* Section Galerie / Images */
+        .gallery-section {
+            background-color: var(--tortabio-pink-light);
+            padding: 60px 5%;
+            border-top: 8px dashed var(--tortabio-pink-main);
+            border-bottom: 8px dashed var(--tortabio-pink-main);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: white;
+            border: 5px solid var(--tortabio-green-bright);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 6px 0 var(--tortabio-green-dark);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .gallery-item p {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--tortabio-dark);
+            margin-top: 10px;
+        }
+
+        /* Section Réassurance Parents */
+        .parents-trust {
+            padding: 60px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-box {
+            background-color: var(--tortabio-white);
+            border: 6px solid var(--tortabio-pink-main);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 12px 0 var(--tortabio-pink-dark);
+        }
+
+        .trust-list {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 700px;
+            list-style: none;
+        }
+
+        .trust-list li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .trust-list li::before {
+            content: "🐢";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--tortabio-green-dark);
+            color: white;
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 8px solid var(--tortabio-pink-main);
+            font-weight: 600;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--tortabio-pink-light);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <span class="logo-text">TORTABIO</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#fonctions">Fonctionnalités</a></li>
+                <li><a href="#visuels">Aperçu</a></li>
+                <li><a href="#parents">Espace Parents</a></li>
+                <li><a href="#commander" class="cta-header">Commander</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Éveiller & Protéger avec Tortabio !</h1>
+        <p>Transformez le temps d'écran en une aventure positive, sécurisée et bilingue pour vos enfants de 3 à 10 ans.</p>
+        <a href="#concept" class="cta-big">Découvrir l'univers 🐢</a>
+    </section>
+
+    <section id="concept" class="presentation">
+        <h2 class="section-title">Le mot des créateurs</h2>
+        <div class="pitch-box">
+            <p><strong>Tortabio</strong> permet aux enfants souvent accros aux écrans dès leur plus jeune âge de se divertir tout en apprenant. Cette tablette ludique leur enseigne l’utilité et les dangers des objets qui les entourent ainsi que leurs multiples fonctionnalités.</p>
+            <br>
+            <p>Ils apprendront à utiliser certaines machines de leur maison pour pouvoir aider leurs parents dès qu’ils en auront la capacité ou même apprendre à réagir en cas d'accident avec un objet du quotidien. Cela permet de sensibiliser les plus jeunes aux risques des électroménagers et autres objets.</p>
+            <br>
+            <p>En conclusion, nous avons pris en compte la banalisation de l’utilisation des écrans entre 3 et 10 ans et essayons de faire de cela quelque chose de positif en rendant cette utilisation utile à la sécurité, l’éducation et l’ouverture d’esprit des jeunes enfants.</p>
+        </div>
+    </section>
+
+    <section id="fonctions" class="presentation" style="background-color: #ffffff; border-radius: 50px; padding: 60px 20px;">
+        <h2 class="section-title">Pourquoi les enfants (et les parents) l'adorent ?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Scanner Intelligent</h3>
+                <p>L'enfant utilise la caméra intégrée pour scanner les objets de la maison et découvrir de manière interactive leurs secrets, fonctions et précautions d'emploi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Sensibilisation aux Dangers</h3>
+                <p>Apprendre les risques des électroménagers, des prises ou des objets tranchants sans danger, pour savoir comment réagir de manière autonome.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Traduction Automatique</h3>
+                <p>Une fonctionnalité unique traduit le nom de l'objet scanné dans la langue souhaitée pour familiariser l'enfant aux langues étrangères.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Tableau des Succès</h3>
+                <p>Un historique complet permet à l'enfant de suivre ses badges, de voir ses statistiques de découverte et de se mesurer amicalement à sa famille.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="visuels" class="gallery-section">
+        <h2 class="section-title" style="color: white; text-shadow: 3px 3px 0 var(--tortabio-green-dark);">Aperçu de la Tablette & de l'App</h2>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="Capture d'écran 2026-06-23 142959.jpg" alt="Monde de Tortabio">
+                <p>Le Monde de Tortabio</p>
+            </div>
+            <div class="gallery-item">
+                <img src="cam.jpg" alt="Interface Scanner">
+                <p>L'Interface du Scanner</p>
+            </div>
+            <div class="gallery-item">
+                <img src="histo.jpg" alt="Tableau des succès">
+                <p>Tableau des Succès (Léa)</p>
+            </div>
+            <div class="gallery-item">
+                <img src="dos.jpg" alt="Coque Tortabio">
+                <p>Le Design de la Coque</p>
+            </div>
+            <div class="gallery-item">
+                <img src="lang.jpg" alt="Choix de la langue">
+                <p>Le Module Multilingue</p>
+            </div>
+            <div class="gallery-item">
+                <img src="accxueil.jpg" alt="Accueil Mondes">
+                <p>Les Mondes à Explorer</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="parents" class="parents-trust">
+        <h2 class="section-title">Conçu pour rassurer les parents</h2>
+        <div class="trust-box">
+            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; color: var(--tortabio-pink-dark);">Un environnement 100% sécurisé et éducatif</p>
+            <ul class="trust-list">
+                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées.</li>
+                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues, limitez le temps d'utilisation et suivez les progrès de votre enfant.</li>
+                <li><strong>Matériau durable et ergonomique :</strong> Une coque en forme de carapace de tortue, ultra-résistante aux chutes quotidiennes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tortabio. Conçu pour la sécurité et l'éveil des enfants. 🐢</p>
+        <div class="footer-links">
+            <a href="#">Mentions Légales</a> | 
+            <a href="#">Politique de Confidentialité</a> | 
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+</body>
+</html>
