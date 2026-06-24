@@ -267,4 +267,943 @@
             height: auto;
             max-height: 240px;
             object-fit: contain;
-            border-radius
+            border-radius: 16px;
+        }
+
+        .gallery-item p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--tortabio-dark);
+            margin-top: 18px;
+        }
+
+        /* Fenêtre de Zoom (Modal) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.85);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal.active img {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* Section Commander / Tarifs */
+        .order-section {
+            padding: 90px 8%;
+            text-align: center;
+        }
+
+        .price-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--tortabio-pink-main);
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 50px 40px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(255, 107, 139, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-box::before {
+            content: "Offre de Lancement";
+            position: absolute;
+            top: 25px;
+            right: -50px;
+            background-color: var(--tortabio-green-bright);
+            color: white;
+            padding: 6px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--tortabio-dark);
+            margin: 15px 0;
+        }
+
+        .price-features {
+            text-align: left;
+            margin: 30px 0;
+            list-style: none;
+        }
+
+        .price-features li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Espace Parents */
+        .parents-trust {
+            padding: 90px 8%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-box {
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .trust-box p {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--tortabio-green-dark);
+            margin-bottom: 35px;
+        }
+
+        .trust-list {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 700px;
+            list-style: none;
+        }
+
+        .trust-list li {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-left: 40px;
+            color: #475569;
+        }
+
+        .trust-list li::before {
+            content: "🐢";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--tortabio-dark);
+            color: #94A3B8;
+            text-align: center;
+            padding: 50px 8%;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            color: var(--tortabio-pink-main);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="Tortabio logo.png" alt="Tortabio Logo" class="logo-img">
+            <span class="logo-text">TORTABIO</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#fonctions">Fonctionnalités</a></li>
+                <li><a href="#visuels">Aperçu</a></li>
+                <li><a href="#parents">Espace Parents</a></li>
+                <li><a href="#commander" class="nav-cta">Commander</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Éveiller & Protéger avec Tortabio</h1>
+        <p>L'intelligence artificielle bienveillante qui transforme l'environnement des enfants en un terrain de jeu bilingue, ludique et hautement sécurisé.</p>
+        <a href="#concept" class="cta-big">Découvrir l'univers</a>
+    </section>
+
+    <section id="concept" class="presentation">
+        <h2 class="section-title">Le mot des créateurs</h2>
+        <div class="section-subtitle">Une approche utile et bienveillante du numérique</div>
+        <div class="pitch-box">
+            <p><strong>Tortabio</strong> permet aux enfants souvent accros aux écrans dès leur plus jeune âge de se divertir tout en apprenant. Cette tablette ludique leur enseigne l’utilité et les dangers des objets qui les entourent ainsi que leurs multiples fonctionnalités.</p>
+            <br>
+            <p>Ils apprenront à utiliser certaines machines de leur maison pour pouvoir aider leurs parents dès qu’ils en auront la capacité ou même apprendre à réagir en cas d'accident avec un objet du quotidien. Cela permet de sensibiliser les plus jeunes aux risques des électroménagers et autres objets.</p>
+            <br>
+            <p>En conclusion, nous avons pris en compte la banalisation de l’utilisation des écrans entre 3 et 10 ans et essayons de faire de cela quelque chose de positif en rendant cette utilisation utile à la sécurité, l’éducation et l’ouverture d’esprit des jeunes enfants.</p>
+        </div>
+    </section>
+
+    <section id="fonctions" class="presentation">
+        <h2 class="section-title">Pourquoi les enfants (et les parents) l'adorent ?</h2>
+        <div class="section-subtitle">Une IA intégrée unique conçue sur-mesure pour leur éveil</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>IA Tortabio Intégrée</h3>
+                <p>Une intelligence artificielle qui transmet, analyse et explique en temps réel chaque objet détecté et scanné par l'enfant.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Alerte des Dangers</h3>
+                <p>L'IA informe instantanément l'enfant sur les risques potentiels (chaleur, coupure, électricité) pour lui apprendre les bons réflexes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Traduction Automatique</h3>
+                <p>Traduit instantanément le nom de tous les objets du quotidien pour familiariser naturellement votre enfant aux langues étrangères.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Rôle & Utilité</h3>
+                <p>Explique de façon ludique à quoi sert l'objet et comment l'utiliser pour aider de manière autonome à la maison.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="visuels" class="gallery-section">
+        <h2 class="section-title">Aperçu de la Tablette & de l'App</h2>
+        <div class="section-subtitle">Cliquez sur une image pour l'agrandir</div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openZoom('Design sans titre (2).jpg')">
+                <img src="Design sans titre (2).jpg" alt="Le Monde de Tortabio">
+                <p>Le Monde de Tortabio</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('cam.png')">
+                <img src="cam.png" alt="Interface Scanner">
+                <p>L'Interface du Scanner</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('histo.png')">
+                <img src="histo.png" alt="Tableau des succès">
+                <p>Tableau des Succès</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('dos.png')">
+                <img src="dos.png" alt="Coque Tortabio">
+                <p>Le Design de la Coque</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('lang.png')">
+                <img src="lang.png" alt="Choix de la langue">
+                <p>Le Module Multilingue</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('accxueil.png')">
+                <img src="accxueil.png" alt="Accueil Mondes">
+                <p>Les Mondes à Explorer</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="zoomModal" class="image-modal" onclick="closeZoom()">
+        <span class="close-modal">&times;</span>
+        <img id="modalImg" src="" alt="Image zoomée">
+    </div>
+
+    <section id="commander" class="order-section">
+        <h2 class="section-title">Adoptez Tortabio dès aujourd'hui</h2>
+        <div class="section-subtitle">Offrez à votre enfant le compagnon d'apprentissage idéal</div>
+        
+        <div class="price-box">
+            <h3>Le Pack Complet Tortabio</h3>
+            <div class="price-tag">24,99€</div>
+            <ul class="price-features">
+                <li>🟢 <strong>Tablette Éducative & Coque Carapace</strong> ultra-résistante.</li>
+                <li>🤖 <strong>IA Tortabio intégrée</strong> : transmet, traduit et analyse les objets scannés.</li>
+                <li>🛡️ <strong>Système d'information des dangers</strong> en temps réel pour l'enfant.</li>
+                <li>🌍 Donne la fonction de l'objet de façon amusante.</li>
+                <li>✨ Garantie zéro publicité et 100% sécurisée.</li>
+            </ul>
+            <a href="#" class="cta-big" style="background-color: var(--tortabio-pink-main); box-shadow: 0 10px 20px rgba(255, 107, 139, 0.2);">Réserver maintenant</a>
+        </div>
+    </section>
+
+    <section id="parents" class="parents-trust">
+        <h2 class="section-title">Conçu pour rassurer les parents</h2>
+        <div class="section-subtitle">Un environnement de confiance, sain et sans concession</div>
+        <div class="trust-box">
+            <p>Un écosystème 100% sécurisé et éducatif</p>
+            <ul class="trust-list">
+                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées à tout moment.</li>
+                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues de traduction, limitez le temps d'utilisation et suivez les progrès en direct.</li>
+                <li><strong>Matériau durable et ergonomique :</strong> Une coque unique en forme de carapace de tortue, ultra-résistante aux chutes du quotidien.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tortabio. Conçu pour la sécurité et l'éveil des enfants. 🐢</p>
+        <div class="footer-links">
+            <a href="#">Mentions Légales</a>
+            <a href="#">Politique de Confidentialité</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        function openZoom(imageSrc) {
+            var modal = document.getElementById("zoomModal");
+            var modalImg = document.getElementById("modalImg");
+            modal.classList.add("active");
+            modalImg.src = imageSrc;
+        }
+
+        function closeZoom() {
+            var modal = document.getElementById("zoomModal");
+            modal.classList.remove("active");
+        }
+    </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortabio - La tablette ludique & éducative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tortabio-green-dark: #2E7D32;
+            --tortabio-green-bright: #4CAF50;
+            --tortabio-green-light: #E8F5E9;
+            --tortabio-pink-main: #FF6B8B;
+            --tortabio-pink-light: #FFF0F3;
+            --tortabio-dark: #2C3E50;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--tortabio-dark);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            
+            /* DÉGRADÉ BIEN POP ET PRONONCÉ */
+            background-color: #fdfafb;
+            background-image: 
+                radial-gradient(circle at 5% 20%, rgba(255, 107, 139, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 95% 35%, rgba(76, 175, 80, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 90% 75%, rgba(255, 107, 139, 0.42) 0%, transparent 45%),
+                radial-gradient(circle at 10% 85%, rgba(76, 175, 80, 0.45) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        /* Barre de Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: 55px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--tortabio-pink-main);
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--tortabio-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--tortabio-green-bright);
+        }
+
+        .nav-cta {
+            background-color: var(--tortabio-pink-main);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 20px;
+            box-shadow: 0 6px 14px rgba(255, 107, 139, 0.2);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            background-color: #ff5276;
+            box-shadow: 0 8px 16px rgba(255, 107, 139, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: transparent;
+            padding: 120px 8% 100px 8%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--tortabio-dark);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            color: #576574;
+        }
+
+        .cta-big {
+            display: inline-block;
+            background-color: var(--tortabio-green-bright);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cta-big:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Sections */
+        .presentation {
+            padding: 90px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            color: var(--tortabio-dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748B;
+            margin-bottom: 50px;
+        }
+
+        .pitch-box {
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255,255,255,0.8);
+            font-size: 1.2rem;
+            color: #475569;
+            text-align: left;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 35px 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255,255,255,0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 14px;
+            background-color: var(--tortabio-green-light);
+            border-radius: 20px;
+        }
+
+        .feature-card:nth-child(even) .feature-icon {
+            background-color: var(--tortabio-pink-light);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: var(--tortabio-dark);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #64748B;
+            font-size: 1rem;
+        }
+
+        /* Galerie d'images */
+        .gallery-section {
+            padding: 90px 8%;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            object-fit: contain;
+            border-radius: 16px;
+        }
+
+        .gallery-item p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--tortabio-dark);
+            margin-top: 18px;
+        }
+
+        /* Fenêtre de Zoom (Modal) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.85);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal.active img {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* Section Commander / Tarifs */
+        .order-section {
+            padding: 90px 8%;
+            text-align: center;
+        }
+
+        .price-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--tortabio-pink-main);
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 50px 40px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(255, 107, 139, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-box::before {
+            content: "Offre de Lancement";
+            position: absolute;
+            top: 25px;
+            right: -50px;
+            background-color: var(--tortabio-green-bright);
+            color: white;
+            padding: 6px 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--tortabio-dark);
+            margin: 15px 0;
+        }
+
+        .price-features {
+            text-align: left;
+            margin: 30px 0;
+            list-style: none;
+        }
+
+        .price-features li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Espace Parents */
+        .parents-trust {
+            padding: 90px 8%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-box {
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .trust-box p {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--tortabio-green-dark);
+            margin-bottom: 35px;
+        }
+
+        .trust-list {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 700px;
+            list-style: none;
+        }
+
+        .trust-list li {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-left: 40px;
+            color: #475569;
+        }
+
+        .trust-list li::before {
+            content: "🐢";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--tortabio-dark);
+            color: #94A3B8;
+            text-align: center;
+            padding: 50px 8%;
+            font-size: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            color: var(--tortabio-pink-main);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="Tortabio logo.png" alt="Tortabio Logo" class="logo-img">
+            <span class="logo-text">TORTABIO</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#fonctions">Fonctionnalités</a></li>
+                <li><a href="#visuels">Aperçu</a></li>
+                <li><a href="#parents">Espace Parents</a></li>
+                <li><a href="#commander" class="nav-cta">Commander</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Éveiller & Protéger avec Tortabio</h1>
+        <p>L'intelligence artificielle bienveillante qui transforme l'environnement des enfants en un terrain de jeu bilingue, ludique et hautement sécurisé.</p>
+        <a href="#concept" class="cta-big">Découvrir l'univers</a>
+    </section>
+
+    <section id="concept" class="presentation">
+        <h2 class="section-title">Le mot des créateurs</h2>
+        <div class="section-subtitle">Une approche utile et bienveillante du numérique</div>
+        <div class="pitch-box">
+            <p><strong>Tortabio</strong> permet aux enfants souvent accros aux écrans dès leur plus jeune âge de se divertir tout en apprenant. Cette tablette ludique leur enseigne l’utilité et les dangers des objets qui les entourent ainsi que leurs multiples fonctionnalités.</p>
+            <br>
+            <p>Ils apprenront à utiliser certaines machines de leur maison pour pouvoir aider leurs parents dès qu’ils en auront la capacité ou même apprendre à réagir en cas d'accident avec un objet du quotidien. Cela permet de sensibiliser les plus jeunes aux risques des électroménagers et autres objets.</p>
+            <br>
+            <p>En conclusion, nous avons pris en compte la banalisation de l’utilisation des écrans entre 3 et 10 ans et essayons de faire de cela quelque chose de positif en rendant cette utilisation utile à la sécurité, l’éducation et l’ouverture d’esprit des jeunes enfants.</p>
+        </div>
+    </section>
+
+    <section id="fonctions" class="presentation">
+        <h2 class="section-title">Pourquoi les enfants (et les parents) l'adorent ?</h2>
+        <div class="section-subtitle">Une IA intégrée unique conçue sur-mesure pour leur éveil</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>IA Tortabio Intégrée</h3>
+                <p>Une intelligence artificielle qui transmet, analyse et explique en temps réel chaque objet détecté et scanné par l'enfant.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Alerte des Dangers</h3>
+                <p>L'IA informe instantanément l'enfant sur les risques potentiels (chaleur, coupure, électricité) pour lui apprendre les bons réflexes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Traduction Automatique</h3>
+                <p>Traduit instantanément le nom de tous les objets du quotidien pour familiariser naturellement votre enfant aux langues étrangères.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Rôle & Utilité</h3>
+                <p>Explique de façon ludique à quoi sert l'objet et comment l'utiliser pour aider de manière autonome à la maison.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="visuels" class="gallery-section">
+        <h2 class="section-title">Aperçu de la Tablette & de l'App</h2>
+        <div class="section-subtitle">Cliquez sur une image pour l'agrandir</div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openZoom('Design sans titre (2).jpg')">
+                <img src="Design sans titre (2).jpg" alt="Le Monde de Tortabio">
+                <p>Le Monde de Tortabio</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('cam.png')">
+                <img src="cam.png" alt="Interface Scanner">
+                <p>L'Interface du Scanner</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('histo.png')">
+                <img src="histo.png" alt="Tableau des succès">
+                <p>Tableau des Succès</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('dos.png')">
+                <img src="dos.png" alt="Coque Tortabio">
+                <p>Le Design de la Coque</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('lang.png')">
+                <img src="lang.png" alt="Choix de la langue">
+                <p>Le Module Multilingue</p>
+            </div>
+            <div class="gallery-item" onclick="openZoom('accxueil.png')">
+                <img src="accxueil.png" alt="Accueil Mondes">
+                <p>Les Mondes à Explorer</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="zoomModal" class="image-modal" onclick="closeZoom()">
+        <span class="close-modal">&times;</span>
+        <img id="modalImg" src="" alt="Image zoomée">
+    </div>
+
+    <section id="commander" class="order-section">
+        <h2 class="section-title">Adoptez Tortabio dès aujourd'hui</h2>
+        <div class="section-subtitle">Offrez à votre enfant le compagnon d'apprentissage idéal</div>
+        
+        <div class="price-box">
+            <h3>Le Pack Complet Tortabio</h3>
+            <div class="price-tag">24,99€</div>
+            <ul class="price-features">
+                <li>🟢 <strong>Tablette Éducative & Coque Carapace</strong> ultra-résistante.</li>
+                <li>🤖 <strong>IA Tortabio intégrée</strong> : transmet, traduit et analyse les objets scannés.</li>
+                <li>🛡️ <strong>Système d'information des dangers</strong> en temps réel pour l'enfant.</li>
+                <li>🌍 Donne la fonction de l'objet de façon amusante.</li>
+                <li>✨ Garantie zéro publicité et 100% sécurisée.</li>
+            </ul>
+            <a href="#" class="cta-big" style="background-color: var(--tortabio-pink-main); box-shadow: 0 10px 20px rgba(255, 107, 139, 0.2);">Réserver maintenant</a>
+        </div>
+    </section>
+
+    <section id="parents" class="parents-trust">
+        <h2 class="section-title">Conçu pour rassurer les parents</h2>
+        <div class="section-subtitle">Un environnement de confiance, sain et sans concession</div>
+        <div class="trust-box">
+            <p>Un écosystème 100% sécurisé et éducatif</p>
+            <ul class="trust-list">
+                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées à tout moment.</li>
+                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues de traduction, limitez le temps d'utilisation et suivez les progrès en direct.</li>
+                <li><strong>Matériau durable et ergonomique :</strong> Une coque unique en forme de carapace de tortue, ultra-résistante aux chutes du quotidien.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tortabio. Conçu pour la sécurité et l'éveil des enfants. 🐢</p>
+        <div class="footer-links">
+            <a href="#">Mentions Légales</a>
+            <a href="#">Politique de Confidentialité</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        function openZoom(imageSrc) {
+            var modal = document.getElementById("zoomModal");
+            var modalImg = document.getElementById("modalImg");
+            modal.classList.add("active");
+            modalImg.src = imageSrc;
+        }
+
+        function closeZoom() {
+            var modal = document.getElementById("zoomModal");
+            modal.classList.remove("active");
+        }
+    </script>
+
+</body>
+</html>
