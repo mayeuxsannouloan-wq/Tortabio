@@ -29,12 +29,21 @@
             font-family: 'Fredoka', sans-serif;
             color: var(--tortabio-dark);
             line-height: 1.6;
-            background-color: #f4faf4;
-            /* Mosaïque géométrique en carapace de tortue (Hexagones) garantie compatible */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='96' viewBox='0 0 56 96'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath stroke='%234CAF50' stroke-width='1' stroke-opacity='0.06' d='M28 24L0 8v16L28 40l28-16V8zM0 56v16l28 16 28-16V56L28 40z'/%3E%3Cpath stroke='%23FF6B8B' stroke-width='1' stroke-opacity='0.04' d='M28 40L0 24v16l28 16 28-16V24zM0 88v8l28-16 28 16v-8L28 72z'/%3E%3C/g%3E%3C/svg%3E");
+            background-color: #f7fbf7;
+            /* MOSAÏQUE GÉOMÉTRIQUE HEXAGONALE (CARAPACE TORTUE) CSS PUR */
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(232, 245, 233, 0.4) 0%, transparent 80%),
+                linear-gradient(30deg, rgba(255, 107, 139, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(255, 107, 139, 0.04) 87.5%, rgba(255, 107, 139, 0.04)),
+                linear-gradient(150deg, rgba(255, 107, 139, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(255, 107, 139, 0.04) 87.5%, rgba(255, 107, 139, 0.04)),
+                linear-gradient(30deg, rgba(76, 175, 80, 0.04) 62%, transparent 62.5%, transparent 37%, rgba(76, 175, 80, 0.04) 37.5%, rgba(76, 175, 80, 0.04)),
+                linear-gradient(150deg, rgba(76, 175, 80, 0.04) 62%, transparent 62.5%, transparent 37%, rgba(76, 175, 80, 0.04) 37.5%, rgba(76, 175, 80, 0.04)),
+                linear-gradient(210deg, rgba(76, 175, 80, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(76, 175, 80, 0.04) 87.5%, rgba(76, 175, 80, 0.04)),
+                linear-gradient(330deg, rgba(76, 175, 80, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(76, 175, 80, 0.04) 87.5%, rgba(76, 175, 80, 0.04));
+            background-size: 52px 90px;
+            background-position: 0 0, 0 0, 0 0, 26px 45px, 26px 45px, 0 0, 0 0;
         }
 
-        /* En-tête / Navigation */
+        /* Barre de Navigation */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -57,9 +66,8 @@
         .logo-img {
             height: 55px;
             width: 55px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .logo-text {
@@ -166,7 +174,7 @@
 
         /* Blocs de contenu */
         .pitch-box {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 24px;
             padding: 45px;
             box-shadow: var(--card-shadow);
@@ -186,7 +194,7 @@
         }
 
         .feature-card {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 24px;
             padding: 35px 30px;
             box-shadow: var(--card-shadow);
@@ -222,7 +230,7 @@
             font-size: 1rem;
         }
 
-        /* Galerie / Visuels */
+        /* Galerie d'images cliquables */
         .gallery-section {
             padding: 90px 8%;
             text-align: center;
@@ -242,11 +250,13 @@
             padding: 24px;
             box-shadow: var(--card-shadow);
             border: 1px solid rgba(255,255,255,0.6);
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gallery-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .gallery-item img {
@@ -264,7 +274,49 @@
             margin-top: 18px;
         }
 
-        /* Section Commander / Prix */
+        /* SYSTÈME DE ZOOM DE L'IMAGE (MODAL) */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.9);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal.active img {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Section Commander / Tarifs */
         .order-section {
             padding: 90px 8%;
             text-align: center;
@@ -283,7 +335,7 @@
         }
 
         .price-box::before {
-            content: "Offre de Lancement";
+            content: "Offre Spéciale";
             position: absolute;
             top: 25px;
             right: -50px;
@@ -300,12 +352,6 @@
             font-weight: 700;
             color: var(--tortabio-dark);
             margin: 15px 0;
-        }
-
-        .price-tag span {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--tortabio-pink-main);
         }
 
         .price-features {
@@ -331,7 +377,7 @@
         }
 
         .trust-box {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 24px;
             padding: 50px;
             box-shadow: var(--card-shadow);
@@ -354,178 +400,3 @@
         .trust-list li {
             font-size: 1.1rem;
             margin-bottom: 24px;
-            position: relative;
-            padding-left: 40px;
-            color: #475569;
-        }
-
-        .trust-list li::before {
-            content: "🐢";
-            position: absolute;
-            left: 0;
-            top: -2px;
-            font-size: 1.3rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--tortabio-dark);
-            color: #94A3B8;
-            text-align: center;
-            padding: 50px 8%;
-            font-size: 1rem;
-        }
-
-        footer p {
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-links a {
-            color: #94A3B8;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        .footer-links a:hover {
-            color: var(--tortabio-pink-main);
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-container">
-            <img src="Tortabio logo.jpg" alt="Tortabio Logo" class="logo-img">
-            <span class="logo-text">TORTABIO</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#concept">Concept</a></li>
-                <li><a href="#fonctions">Fonctionnalités</a></li>
-                <li><a href="#visuels">Aperçu</a></li>
-                <li><a href="#parents">Espace Parents</a></li>
-                <li><a href="#commander" class="nav-cta">Commander</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Éveiller & Protéger avec Tortabio</h1>
-        <p>L'intelligence artificielle bienveillante qui transforme l'environnement des enfants en un terrain de jeu bilingue, ludique et hautement sécurisé.</p>
-        <a href="#concept" class="cta-big">Découvrir l'univers</a>
-    </section>
-
-    <section id="concept" class="presentation">
-        <h2 class="section-title">Le mot des créateurs</h2>
-        <div class="section-subtitle">Une approche utile et bienveillante du numérique</div>
-        <div class="pitch-box">
-            <p><strong>Tortabio</strong> permet aux enfants souvent accros aux écrans dès leur plus jeune âge de se divertir tout en apprenant. Cette tablette ludique leur enseigne l’utilité et les dangers des objets qui les entourent ainsi que leurs multiples fonctionnalités.</p>
-            <br>
-            <p>Ils apprendront à utiliser certaines machines de leur maison pour pouvoir aider leurs parents dès qu’ils en auront la capacité ou même apprendre à réagir en cas d'accident avec un objet du quotidien. Cela permet de sensibiliser les plus jeunes aux risques des électroménagers et autres objets.</p>
-            <br>
-            <p>En conclusion, nous avons pris en compte la banalisation de l’utilisation des écrans entre 3 et 10 ans et essayons de faire de cela quelque chose de positif en rendant cette utilisation utile à la sécurité, l’éducation et l’ouverture d’esprit des jeunes enfants.</p>
-        </div>
-    </section>
-
-    <section id="fonctions" class="presentation">
-        <h2 class="section-title">Pourquoi les enfants (et les parents) l'adorent ?</h2>
-        <div class="section-subtitle">Une IA intégrée unique conçue sur-mesure pour leur éveil</div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3>IA Tortabio Intégrée</h3>
-                <p>Une intelligence artificielle qui transmet, analyse et explique en temps réel chaque objet détecté et scanné par l'enfant.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Alerte des Danger</h3>
-                <p>L'IA informe instantanément l'enfant sur les risques potentiels (chaleur, coupure, électricité) pour lui apprendre les bons réflexes.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Traduction Automatique</h3>
-                <p>Traduit instantanément le nom de tous les objets du quotidien pour familiariser naturellement votre enfant aux langues étrangères.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <h3>Rôle & Utilité</h3>
-                <p>Explique de façon ludique à quoi sert l'objet et comment l'utiliser pour aider de manière autonome à la maison.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="visuels" class="gallery-section">
-        <h2 class="section-title">Aperçu de la Tablette & de l'App</h2>
-        <div class="section-subtitle">Découvrez l'interface interactive de Tortabio</div>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="Design sans titre (2).jpg" alt="Le Monde de Tortabio">
-                <p>Le Monde de Tortabio</p>
-            </div>
-            <div class="gallery-item">
-                <img src="cam.png" alt="Interface Scanner">
-                <p>L'Interface du Scanner</p>
-            </div>
-            <div class="gallery-item">
-                <img src="histo.png" alt="Tableau des succès">
-                <p>Tableau des Succès</p>
-            </div>
-            <div class="gallery-item">
-                <img src="dos.png" alt="Coque Tortabio">
-                <p>Le Design de la Coque</p>
-            </div>
-            <div class="gallery-item">
-                <img src="lang.png" alt="Choix de la langue">
-                <p>Le Module Multilingue</p>
-            </div>
-            <div class="gallery-item">
-                <img src="accxueil.png" alt="Accueil Mondes">
-                <p>Les Mondes à Explorer</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="commander" class="order-section">
-        <h2 class="section-title">Adoptez Tortabio dès aujourd'hui</h2>
-        <div class="section-subtitle">Offrez à votre enfant le compagnon d'apprentissage idéal</div>
-        
-        <div class="price-box">
-            <h3>Le Pack Complet Tortabio</h3>
-            <div class="price-tag">24,99€</div>
-            <ul class="price-features">
-                <li>🟢 <strong>Tablette Éducative & Coque Carapace</strong> ultra-résistante.</li>
-                <li>🤖 <strong>IA Tortabio incluse à vie</strong> (sans abonnement).</li>
-                <li>🛡️ <strong>Système d'analyse de danger</strong> en temps réel.</li>
-                <li>🌍 <strong>Traducteur multilingue</strong> interactif.</li>
-                <li>✨ Garantie zéro publicité et 100% sécurisée.</li>
-            </ul>
-            <a href="#" class="cta-big" style="background-color: var(--tortabio-pink-main); box-shadow: 0 10px 20px rgba(255, 107, 139, 0.2);">Réserver maintenant</a>
-        </div>
-    </section>
-
-    <section id="parents" class="parents-trust">
-        <h2 class="section-title">Conçu pour rassurer les parents</h2>
-        <div class="section-subtitle">Un environnement de confiance, sain et sans concession</div>
-        <div class="trust-box">
-            <p>Un écosystème 100% sécurisé et éducatif</p>
-            <ul class="trust-list">
-                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées à tout moment.</li>
-                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues de traduction, limitez le temps d'utilisation et suivez les progrès en direct.</li>
-                <li><strong>Matériau durable et ergonomique :</strong> Une coque unique en forme de carapace de tortue, ultra-résistante aux chutes du quotidien.</li>
-            </ul>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Tortabio. Conçu pour la sécurité et l'éveil des enfants. 🐢</p>
-        <div class="footer-links">
-            <a href="#">Mentions Légales</a>
-            <a href="#">Politique de Confidentialité</a>
-            <a href="#">Contact</a>
-        </div>
-    </footer>
-
-</body>
-</html>
