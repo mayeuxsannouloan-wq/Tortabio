@@ -10,15 +10,16 @@
     
     <style>
         :root {
-            --tortabio-green-dark: #4CAF50;
-            --tortabio-green-light: #81C784;
-            --tortabio-green-bright: #66BB6A;
-            --tortabio-pink-main: #FF8DA1;
-            --tortabio-pink-dark: #FF6B8B;
-            --tortabio-pink-light: #FFB3C1;
-            --tortabio-bg: #F4FBF4;
+            --tortabio-green-dark: #388E3C;
+            --tortabio-green-light: #C8E6C9;
+            --tortabio-green-bright: #4CAF50;
+            --tortabio-pink-main: #FF6B8B;
+            --tortabio-pink-dark: #D81B60;
+            --tortabio-pink-light: #FCE4EC;
+            --tortabio-bg: #F1F8E9;
             --tortabio-white: #FFFFFF;
-            --tortabio-dark: #2C3E50;
+            --tortabio-dark: #1A237E;
+            --stroke-color: #000000;
         }
 
         * {
@@ -46,7 +47,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .logo-container {
@@ -57,9 +58,11 @@
 
         .logo-text {
             font-family: 'Modak', cursive;
-            font-size: 2.5rem;
-            color: var(--tortabio-green-dark);
-            text-shadow: 3px 3px 0px var(--tortabio-pink-main);
+            font-size: 3rem;
+            color: #FF6B8B;
+            /* Contour noir très prononcé style cartoon */
+            -webkit-text-stroke: 2px var(--stroke-color);
+            text-shadow: 4px 4px 0px var(--tortabio-green-dark);
             letter-spacing: 2px;
         }
 
@@ -67,39 +70,42 @@
             display: flex;
             list-style: none;
             gap: 25px;
+            align-items: center;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--tortabio-dark);
+            color: #000000;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
             padding: 8px 16px;
             border-radius: 20px;
         }
 
         nav a:hover {
-            color: var(--tortabio-pink-dark);
-            background-color: var(--tortabio-pink-light);
+            color: white;
+            background-color: var(--tortabio-pink-main);
+            -webkit-text-stroke: 1px var(--stroke-color);
         }
 
         .cta-header {
             background-color: var(--tortabio-pink-main);
             color: white !important;
-            border: 3px solid var(--tortabio-pink-dark);
-            box-shadow: 0 4px 0 var(--tortabio-pink-dark);
+            border: 3px solid var(--stroke-color);
+            box-shadow: 0 4px 0 var(--stroke-color);
+            -webkit-text-stroke: 1px var(--stroke-color);
         }
 
         .cta-header:hover {
             transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--tortabio-pink-dark);
+            box-shadow: 0 2px 0 var(--stroke-color);
         }
 
         /* Hero Section */
         .hero {
-            background: radial-gradient(circle, var(--tortabio-green-light) 0%, var(--tortabio-green-dark) 100%);
-            padding: 80px 5%;
+            background: radial-gradient(circle, #81C784 0%, #388E3C 100%);
+            padding: 100px 5%;
             color: white;
             text-align: center;
             position: relative;
@@ -108,43 +114,47 @@
 
         .hero h1 {
             font-family: 'Modak', cursive;
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 20px;
-            color: white;
-            text-shadow: 4px 4px 0px var(--tortabio-pink-dark);
+            color: #FFF;
+            -webkit-text-stroke: 3px var(--stroke-color);
+            text-shadow: 6px 6px 0px var(--tortabio-pink-dark);
             letter-spacing: 1px;
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             max-width: 800px;
             margin: 0 auto 35px auto;
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-weight: 700;
+            color: #FFFFFF;
+            -webkit-text-stroke: 1px var(--stroke-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .cta-big {
             display: inline-block;
             background-color: var(--tortabio-pink-main);
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            padding: 15px 40px;
+            padding: 15px 45px;
             text-decoration: none;
             border-radius: 50px;
-            border: 4px solid white;
-            box-shadow: 0 8px 0 var(--tortabio-pink-dark), 0 10px 20px rgba(0,0,0,0.2);
+            border: 4px solid var(--stroke-color);
+            box-shadow: 0 8px 0 var(--stroke-color);
+            -webkit-text-stroke: 1.5px var(--stroke-color);
             transition: all 0.2s ease;
         }
 
         .cta-big:hover {
             transform: translateY(4px);
-            box-shadow: 0 4px 0 var(--tortabio-pink-dark), 0 5px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 0 var(--stroke-color);
         }
 
         /* Section Présentation / Pitch */
         .presentation {
-            padding: 60px 5%;
+            padding: 80px 5%;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
@@ -152,20 +162,22 @@
 
         .section-title {
             font-family: 'Modak', cursive;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--tortabio-green-dark);
             margin-bottom: 40px;
-            text-shadow: 2px 2px 0px var(--tortabio-pink-light);
+            -webkit-text-stroke: 2px var(--stroke-color);
+            text-shadow: 4px 4px 0px var(--tortabio-pink-main);
         }
 
         .pitch-box {
             background-color: white;
-            border: 6px solid var(--tortabio-green-bright);
+            border: 6px solid var(--stroke-color);
             border-radius: 30px;
             padding: 40px;
             box-shadow: 0 12px 0 var(--tortabio-green-dark);
-            font-size: 1.2rem;
-            color: var(--tortabio-dark);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #000000;
             margin-bottom: 60px;
             text-align: left;
         }
@@ -180,10 +192,10 @@
 
         .feature-card {
             background-color: white;
-            border: 4px solid var(--tortabio-pink-main);
+            border: 4px solid var(--stroke-color);
             border-radius: 25px;
             padding: 30px;
-            box-shadow: 0 8px 0 var(--tortabio-pink-light);
+            box-shadow: 0 8px 0 var(--tortabio-pink-main);
             transition: transform 0.3s ease;
         }
 
@@ -192,59 +204,71 @@
         }
 
         .feature-icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 15px;
         }
 
         .feature-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--tortabio-green-dark);
             margin-bottom: 12px;
+            -webkit-text-stroke: 1px var(--stroke-color);
         }
 
-        /* Section Galerie / Images */
+        .feature-card p {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        /* Section Galerie / Vrais Visuels */
         .gallery-section {
-            background-color: var(--tortabio-pink-light);
-            padding: 60px 5%;
-            border-top: 8px dashed var(--tortabio-pink-main);
-            border-bottom: 8px dashed var(--tortabio-pink-main);
+            background-color: var(--tortabio-pink-main);
+            padding: 80px 5%;
+            border-top: 8px solid var(--stroke-color);
+            border-bottom: 8px solid var(--stroke-color);
             text-align: center;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .gallery-item {
             background: white;
-            border: 5px solid var(--tortabio-green-bright);
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 6px 0 var(--tortabio-green-dark);
+            border: 5px solid var(--stroke-color);
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 10px 0 var(--tortabio-green-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .gallery-item img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: block;
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 15px;
+            border: 3px solid #000;
+            background-color: #f9f9f9;
         }
 
         .gallery-item p {
             font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--tortabio-dark);
-            margin-top: 10px;
+            font-size: 1.3rem;
+            color: #000000;
+            margin-top: 15px;
         }
 
         /* Section Réassurance Parents */
         .parents-trust {
-            padding: 60px 5%;
+            padding: 80px 5%;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
@@ -252,10 +276,18 @@
 
         .trust-box {
             background-color: var(--tortabio-white);
-            border: 6px solid var(--tortabio-pink-main);
+            border: 6px solid var(--stroke-color);
             border-radius: 30px;
             padding: 40px;
-            box-shadow: 0 12px 0 var(--tortabio-pink-dark);
+            box-shadow: 0 12px 0 var(--tortabio-pink-main);
+        }
+
+        .trust-box p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--tortabio-pink-dark);
+            -webkit-text-stroke: 1px var(--stroke-color);
+            margin-bottom: 25px;
         }
 
         .trust-list {
@@ -266,10 +298,12 @@
         }
 
         .trust-list li {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             position: relative;
-            padding-left: 35px;
+            padding-left: 45px;
+            color: #000000;
+            font-weight: 600;
         }
 
         .trust-list li::before {
@@ -277,7 +311,7 @@
             position: absolute;
             left: 0;
             top: 2px;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
         /* Footer */
@@ -286,22 +320,28 @@
             color: white;
             text-align: center;
             padding: 40px 5%;
-            border-top: 8px solid var(--tortabio-pink-main);
-            font-weight: 600;
+            border-top: 8px solid var(--stroke-color);
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         footer p {
             margin-bottom: 15px;
+            -webkit-text-stroke: 0.5px var(--stroke-color);
         }
 
         .footer-links a {
-            color: var(--tortabio-pink-light);
+            color: #FFFFFF;
             text-decoration: none;
             margin: 0 10px;
+            background-color: var(--tortabio-pink-main);
+            padding: 5px 10px;
+            border: 2px solid #000;
+            border-radius: 10px;
         }
 
         .footer-links a:hover {
-            text-decoration: underline;
+            background-color: var(--tortabio-pink-dark);
         }
     </style>
 </head>
@@ -339,13 +379,13 @@
         </div>
     </section>
 
-    <section id="fonctions" class="presentation" style="background-color: #ffffff; border-radius: 50px; padding: 60px 20px;">
+    <section id="fonctions" class="presentation" style="background-color: #ffffff; border-radius: 50px; padding: 60px 20px; border: 5px solid #000;">
         <h2 class="section-title">Pourquoi les enfants (et les parents) l'adorent ?</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🔍</div>
                 <h3>Scanner Intelligent</h3>
-                <p>L'enfant utilise la caméra intégrée pour scanner les objets de la maison et découvrir de manière interactive leurs secrets, fonctions et précautions d'emploi.</p>
+                <p>L'enfant utilise la caméra intégrée pour scanner les objets du quotidien et découvrir de manière interactive leurs secrets, fonctions et précautions d'emploi.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🛡️</div>
@@ -366,11 +406,11 @@
     </section>
 
     <section id="visuels" class="gallery-section">
-        <h2 class="section-title" style="color: white; text-shadow: 3px 3px 0 var(--tortabio-green-dark);">Aperçu de la Tablette & de l'App</h2>
+        <h2 class="section-title" style="color: white; text-shadow: 4px 4px 0 var(--stroke-color); font-size: 4rem;">Aperçu de la Tablette & de l'App</h2>
         
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="Capture d'écran 2026-06-23 142959.jpg" alt="Monde de Tortabio">
+                <img src="Capture d'écran 2026-06-23 142959.jpg" alt="Le Monde de Tortabio">
                 <p>Le Monde de Tortabio</p>
             </div>
             <div class="gallery-item">
@@ -399,10 +439,10 @@
     <section id="parents" class="parents-trust">
         <h2 class="section-title">Conçu pour rassurer les parents</h2>
         <div class="trust-box">
-            <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; color: var(--tortabio-pink-dark);">Un environnement 100% sécurisé et éducatif</p>
+            <p>Un environnement 100% sécurisé et éducatif</p>
             <ul class="trust-list">
-                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées.</li>
-                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues, limitez le temps d'utilisation et suivez les progrès de votre enfant.</li>
+                <li><strong>Zéro publicité, Zéro tracking :</strong> Vos données et celles de vos enfants restent privées à tout moment.</li>
+                <li><strong>Contrôle parental avancé :</strong> Choisissez les langues de traduction, limitez le temps d'utilisation et suivez les progrès de votre enfant.</li>
                 <li><strong>Matériau durable et ergonomique :</strong> Une coque en forme de carapace de tortue, ultra-résistante aux chutes quotidiennes.</li>
             </ul>
         </div>
@@ -411,8 +451,8 @@
     <footer>
         <p>&copy; 2026 Tortabio. Conçu pour la sécurité et l'éveil des enfants. 🐢</p>
         <div class="footer-links">
-            <a href="#">Mentions Légales</a> | 
-            <a href="#">Politique de Confidentialité</a> | 
+            <a href="#">Mentions Légales</a>
+            <a href="#">Politique de Confidentialité</a>
             <a href="#">Contact</a>
         </div>
     </footer>
